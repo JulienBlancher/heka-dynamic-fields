@@ -1,6 +1,4 @@
 --[[
-Copyright Julien Blancher. You can use this code for all purposes.
-
 Parses a monolog json line, and add each key as a field with its value for elasticsearch.
 
 Config:
@@ -61,15 +59,17 @@ function process_message ()
 
     -- Get the log line
     local log = read_message("Payload")
+    if not log then return -1 end
 
     -- Unserialize the json
     local log_array = cjson.decode(log)
+    if not log_array then return -1 end
 
     -- Add the basic fields
     fields.Message = log_array["message"]
     fields.Level = log_array["level"]
     fields.Level_Name = log_array["level_name"]
-    fields.channel = log_array["channel"]
+    fields.Channel = log_array["channel"]
 
     -- Add context fields
     for key,value in pairs(log_array["context"])
