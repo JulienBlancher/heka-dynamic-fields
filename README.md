@@ -12,7 +12,7 @@ Config:
     filename = "/var/www/heka/sandbox/lua/decoders/dynamic_fields.lua"
 
 *Example Heka Message*
-
+```
 :Uuid: 5241d061-d807-413f-aebe-0cb3e40639f1
 :Timestamp: 2014-09-01T15:08:11.000Z
 :Type: logfile
@@ -35,5 +35,4 @@ Config:
     | :Level: 200
     | :Level_Name: INFO
     | :date: 2014-09-01 17:08:11
-
---]]
+```
